@@ -17,17 +17,25 @@ void Countfrequency(string s) {
     }
 
     // Print duplicate characters
+    bool found = false;
     for (int i = 0; i < 26; i++) {
         if (f[i] > 1) {
             cout << char(i + 'a') << " -> " << f[i] << endl;
+            found = true;
         }
+    }
+
+    if (!found) {
+        cout << "No duplicate characters found!" << endl;
     }
 }
 
 int main() {
     cout << "Hello Arpan, Be your own sparkles!!" << endl;
 
-    string s = "arpan";
+    string s;
+    cout << "Enter a string: ";
+    getline(cin, s); // Allows spaces in input
     Countfrequency(s);
 
     return 0;
