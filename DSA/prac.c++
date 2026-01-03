@@ -1,34 +1,31 @@
-#include <iostream>
-#include <vector>
-#include <string>
-#include <cctype>
+//Find the character that appears more than n/2 times. 
+#include<iostream>
+#include<vector>
 using namespace std;
 
-// Find all duplicate characters
-void Countfrequency(string s) {
-    vector<int> f(26, 0);
-
-    // Count frequency (convert to lowercase)
-    for (char c : s) {
-        c = tolower(c);
-        if (c >= 'a' && c <= 'z') {
-            f[c - 'a']++;
-        }
+char majorityElement(string s){
+    int n = s.size();
+    vector<int> freq(26, 0);
+    for(char c : s ){
+        freq[c - 'a']++;
     }
 
-    // Print duplicate characters
-    for (int i = 0; i < 26; i++) {
-        if (f[i] > 1) {
-            cout << char(i + 'a') << " -> " << f[i] << endl;
+    for(int i=0; i<26; i++){
+        if(freq[i] > n/2){
+            return char(i + 'a');
         }
     }
+    return '?';
 }
 
-int main() {
-    cout << "Hello Arpan, Be your own sparkles!!" << endl;
-
-    string s = "arpan";
-    Countfrequency(s);
-
-    return 0;
+int main(){
+    string s;
+    cout << "Enter the string: ";
+    cin >> s ;
+    char result = majorityElement(s);
+    if(result != '?')
+        cout << "Majority character is: " << result << endl;
+    else
+        cout << "No majority character found" << endl;
+    return 0;        
 }
